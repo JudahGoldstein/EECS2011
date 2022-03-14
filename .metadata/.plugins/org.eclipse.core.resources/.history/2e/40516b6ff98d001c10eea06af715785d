@@ -1,0 +1,123 @@
+package model;
+
+import java.util.concurrent.ConcurrentHashMap;
+
+import tests.Node;
+
+public class ListUtilities {
+
+	public Node<String> getAllPrefixes(Node<Integer> input, int i, int j) {
+		Node<String> output = new Node<String>(null, null);
+		Node<String> currento = output;
+		int count = i;
+		while (count <= j) {
+			String out = "[";
+			Node<Integer> head = input;
+			for (int z = 1; z <= count; z++) {
+				out = out += head.getElement();
+				if (z == count) {
+					out += "]";
+				} else {
+					out += ", ";
+					head = head.getNext();
+				}
+
+			}
+			currento.setElement(out);
+			if (count < j) {
+				currento.setNext(new Node<String>(null, null));
+				currento = currento.getNext();
+			}
+			count++;
+		}
+
+		return output;
+	}
+
+	public Node<Integer> getMergedChain(Node<Integer> leftChain, Node<Integer> rightChain) {
+		if (leftChain == null && rightChain == null) {
+			return null;
+		}
+		if (rightChain == null) {
+			return hardCopy(leftChain);
+		}
+		if (leftChain == null) {
+			return hardCopy(rightChain);
+		}
+		Node<Integer> left = hardCopy(leftChain);
+		Node<Integer> right = hardCopy(rightChain);
+		Node<Integer> output = new Node<Integer>(0, null);
+		Node<Integer> current = output;
+		while (true) {
+			if (left.getElement() <= right.getElement()) {
+				current.setNext(left);
+				current = current.getNext();
+				if (current.getNext() == null) {
+					current.setNext(right);
+					return output.getNext();
+				}
+				left = left.getNext();
+			} else if (left.getElement() > right.getElement()) {
+				current.setNext(right);
+				current = current.getNext();
+				if (current.getNext() == null) {
+					current.setNext(left);
+					return output.getNext();
+				}
+				right = right.getNext();
+			}
+		}
+	}
+
+	private Node<Integer> hardCopy(Node<Integer> input) {
+		Node<Integer> output = new Node<Integer>(null, null);
+		Node<Integer> head = output;
+		Node<Integer> current = input;
+		while (current.getNext() != null) {
+			head.setElement(current.getElement());
+			head.setNext(new Node<Integer>(null, null));
+			head = head.getNext();
+			current = current.getNext();
+		}
+		head.setElement(current.getElement());
+		return output;
+	}
+
+	public Node<Integer> getInterleavedArithmeticFibonacciSequences(int i, int j, int k, int l) {
+		int fibCount = 0;
+		int ariCount = 0;
+		Node<Integer> output = new Node<Integer>(null, null);
+		Node<Integer> current = output;
+		while(fibCount < l || ariCount < k) {
+			current.setNext(new Node<Integer>(null, null));
+			current = current.getNext();
+			if(ariCount < k) {
+				current.setElement(i + (ariCount-1)*j);
+				ariCount++;
+			}
+			if(fibCount < l) {
+				current.setElement(fib(fibCount+1));
+				fibCount++;
+			}
+		}
+		return output;
+	}
+	
+	private int fib(int i) {
+		if(i==1) {
+			return 1;
+		}
+        else if(i==2) {
+        	return 1;
+        }
+        else{
+            return fib(i-1)+fib(i-2);
+        }
+	}
+
+	public Node<String> getGroupedStrings(Node<String> input, int i, int j) {
+		Node<String> ltm = new Node<String>(null,null);
+		return null;
+	}
+
+}

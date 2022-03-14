@@ -1,0 +1,12 @@
+package model;
+
+import tests.Node;
+
+public class ListUtilities<T> {
+
+	public Node<String> task(Node<String> n1, int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

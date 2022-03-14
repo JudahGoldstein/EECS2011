@@ -1,0 +1,20 @@
+package model;
+
+import tests.Node;
+
+public class ListUtilities<T> {
+
+	public Node<String> task(Node<String> n1, int n) {
+		Node<String> current = n1;
+		for(int i = 0; i<n; i++) {
+			if(current.getNext() == null) {
+				current = n1;
+			} else {
+				current = current.getNext();
+			}
+		}
+		System.out.println(current.getElement());
+		return current;
+	}
+
+}
