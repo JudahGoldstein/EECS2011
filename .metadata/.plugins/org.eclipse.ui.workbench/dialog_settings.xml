@@ -16,6 +16,7 @@
 		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
 		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\yehud\Documents\GitHub\EECS2011\EECS2011_W22_A2.zip"/>
 			<item value="C:\Users\yehud\Downloads\Test1a.zip"/>
 			<item value="Test1a.zip"/>
 		</list>
